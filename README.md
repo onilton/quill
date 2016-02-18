@@ -891,6 +891,10 @@ Sources must be defined as `object` and the object name is used as the key to ob
 
 ### quill-jdbc ###
 
+Quill uses [HikariCP](https://github.com/brettwooldridge/HikariCP) for connection pooling. Please refer to HikariCP's [documentation](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) for a detailed explanation of the available configurations.
+
+Note that there are `dataSource` configurations, that go under `dataSource`, like `user` and `password`, but some pool settings may go under the root config, like `connectionTimeout`.
+
 **MySQL**
 
 sbt dependencies
@@ -919,6 +923,7 @@ db.dataSource.password=root
 db.dataSource.cachePrepStmts=true
 db.dataSource.prepStmtCacheSize=250
 db.dataSource.prepStmtCacheSqlLimit=2048
+db.connectionTimeout=30000
 ```
 
 **Postgres**
@@ -948,6 +953,7 @@ db.dataSource.password=root
 db.dataSource.databaseName=database
 db.dataSource.portNumber=5432
 db.dataSource.serverName=host
+db.connectionTimeout=30000
 ```
 
 Please refer to HikariCP's [documentation](https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) for a detailed explanation of the available configurations.
